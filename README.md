@@ -54,7 +54,7 @@ Create new hosts entries:
 
 Any value from https://docs.puppetlabs.com/references/latest/type.html#host can be used. The only 2 mandatory values are first entry and ip.
 
-Before first run make sure the server have the fqdn set up properly either in /etc/hosts or /etc/resolv.conf. This can be done using the above example. Facter will check first using "hostname" command, if this will fail then it will check in resolv.conf. Resolv.conf will always change depending on your network setup. To setup a custom domain (other then the one from resolv.conf) use the below entry in hiera:
+Before first run make sure the server have the fqdn set up properly either in /etc/hosts or /etc/resolv.conf. This can be done using the above example. Facter will check first using "hostname" command, if this will fail then it will check in resolv.conf. Resolv.conf will always change depending on your network setup. To setup a custom domain (other than the one from resolv.conf) use the below entry in hiera:
 
             hosts::fqdn_entry: '%{hostname}.custom_domainname'
 
