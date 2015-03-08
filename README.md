@@ -60,6 +60,12 @@ Before first run make sure the server have the fqdn set up properly either in /e
 
             hosts::fqdn_entry: '%{hostname}.custom_domainname'
 
+Add extra entries for localhoost
+
+            hosts::localhost_entries: 
+                                    - 'first_localhost_entry'
+                                    - ' second_localhost_entry'
+
 ## Limitations
 
 This module has been tested with CentOS 6.5 with facter 2.2.0 using hiera configs.
