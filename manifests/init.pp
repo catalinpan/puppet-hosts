@@ -1,6 +1,7 @@
 class hosts (
-	$fqdn_entry	= $::fqdn,
-	$hostname_entry	= $::hostname,
+	$fqdn_entry		= $::fqdn,
+	$hostname_entry		= $::hostname,
+	$localhost_entries	= [],
 	)  {
 
 	file { 'hosts_file':
