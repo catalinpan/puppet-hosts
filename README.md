@@ -6,74 +6,58 @@
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with hosts](#setup)
     * [What hosts affects](#what-hosts-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with hosts](#beginning-with-hosts)
 4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module can be used to fully manage hosts entries on the servers using Puppet. The module will keep consistency of your hosts entries and will not change the order of the hosts entries.
+
+WARNING: This module will purge any existing hosts entries
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+This module expects the server to have a hostname and a domainname. The module will ensure the consistency of the hosts entries everytime Puppet runs. This will help also facter to detect the hostname and domain name entries.
+Before installing this module make sure that you have your hostname and domainname properly and matches with your puppet configs.
+Facter will check for the hostname and domainname first on the /etc/hosts using "hostname" command. 
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+By having on the hosts:
+
+            127.0.0.1      hostname.domainname hostname ...............
+
+will ensure that facter will properly detect your server facts and all your exported resources will be exported everytime using the same fqdn. This will also ensure that your server will always use the same ssl key created on the initial puppet run. 
+
 
 ## Setup
 
 ### What hosts affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-### Beginning with hosts
-
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+* All your current hosts from the server will be purged.
+* Make sure you specify all entries required for hosts file.
+* This module has been tested on CentOS with facter 2.2.0 using hiera configs.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+Create new hosts entries:
 
-## Reference
+            hosts::hosts_entries:
+                     'first_entry':
+                             ip: '10.0.0.200'
+                             host_aliases:
+                                          - 'first_entry_alias_1'
+                                          - 'first_entry_alias_2'
+                     'second_entry':
+                             ip: '10.0.0.201'
+                             host_aliases: 'second_entry_alias_1'
+                     'third_entry':
+                             ip: '10.0.0.201'
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+Any value from https://docs.puppetlabs.com/references/latest/type.html#host can be used. The only 2 mandatory values are first entry and ip.
+
+Before first run make sure the server have the fqdn set up properly either in /etc/hosts or /etc/resolv.conf. This can be done using the above example. Facter will check first using "hostname" command, if this will fail then it will check in resolv.conf. Resolv.conf will always change depending on your network setup. To setup a custom domain (other then the one from resolv.conf) use the below entry in hiera:
+
+            hosts::fqdn_entry: '%{hostname}.custom_domainname'
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+This module has been tested with CentOS 6.5 with facter 2.2.0 using hiera configs.
