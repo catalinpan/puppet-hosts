@@ -1,0 +1,12 @@
+{
+  "name": "puppet-hosts",
+  "version": "0.1.0",
+  "author": "Catalin Panaite",
+  "summary": "Manage hosts entries with puppet",
+  "license": "MIT",
+  "source": "https://github.com/catalinpan/puppet-hosts",
+  "issues_url": "https://github.com/catalinpan/puppet-hosts/issues",
+  "project_page": "https://github.com/catalinpan/puppet-hosts",
+  "dependencies": []
+}
+
