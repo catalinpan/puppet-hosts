@@ -64,7 +64,7 @@ Add extra entries for localhoost
 
             hosts::localhost_entries: 
                                     - 'first_localhost_entry'
-                                    - ' second_localhost_entry'
+                                    - 'second_localhost_entry'
 
 ## Limitations
 
