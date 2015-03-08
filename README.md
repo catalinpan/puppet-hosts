@@ -15,6 +15,8 @@ This module can be used to fully manage hosts entries on the servers using Puppe
 
 WARNING: This module will purge any existing hosts entries
 
+The module will always keep first 2 entries in hosts for 127.0.0.1 and ::1 in this order.
+
 ## Module Description
 
 This module expects the server to have a hostname and a domainname. The module will ensure the consistency of the hosts entries everytime Puppet runs. This will help also facter to detect the hostname and domain name entries.
