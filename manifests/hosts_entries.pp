@@ -6,5 +6,5 @@
 class hosts::entries {
   $myHost = hiera_hash('hosts::hosts_entries')
   create_resources ( host, $myHost )
- }
+  }
 

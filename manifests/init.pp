@@ -7,8 +7,8 @@ class hosts (
   $fqdn_entry = $::fqdn,
   $hostname_entry = $::hostname,
   $localhost_entries = [],
- ) {
- file { 'hosts_file':
+  ) {
+  file { 'hosts_file':
   path    => '/etc/hosts',
   owner   => root,
   group   => root,
@@ -17,6 +17,6 @@ class hosts (
   before  => Class[ hosts::entries ],
   force   => true,
   purge   => true,
- }
- include hosts::entries
- } 
+  }
+  include hosts::entries
+  } 
