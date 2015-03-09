@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/catalinpan/puppet-hosts.svg?branch=master)](https://travis-ci.org/catalinpan/puppet-hosts)
+
 # hosts
 
 #### Table of Contents
