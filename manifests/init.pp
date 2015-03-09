@@ -13,7 +13,7 @@ class hosts (
   owner   => root,
   group   => root,
   mode    => '0644',
-  content => template(hosts/hosts.erb),
+  content => template('hosts/hosts.erb'),
   before  => Class[ hosts::entries ],
   force   => true,
   purge   => true,
