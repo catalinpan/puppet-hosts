@@ -19,4 +19,4 @@ class hosts (
   purge   => true,
   }
   include hosts::entries
-  } 
+  }
