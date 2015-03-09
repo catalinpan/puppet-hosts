@@ -19,7 +19,7 @@ The module will always keep first 2 entries in hosts for 127.0.0.1 and ::1 in th
 
 ## Module Description
 
-This module expects the server to have a hostname and a domainname. The module will ensure the consistency of the hosts entries everytime Puppet runs. This will help also facter to detect the hostname and domain name entries.
+ This module expects the server to have a hostname and a domainname. The module will ensure the consistency of the hosts entries everytime Puppet runs. This will help also facter to detect the hostname and domain name entries.
 Before installing this module make sure that you have your hostname and domainname properly and matches with your puppet configs.
 Facter will check for the hostname and domainname first on the /etc/hosts using "hostname" command. 
 
