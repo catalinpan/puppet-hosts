@@ -69,6 +69,20 @@ Add extra entries for localhoost
                                     - 'first_localhost_entry'
                                     - 'second_localhost_entry'
 
+Export host entries:
+
+           hosts::hosts_entries_export:
+        		'exported_entry_01':
+		                ip: %{::ipaddress}
+                		host_aliases:
+                        		- exported_entry_01_alias
+                		tag: application_production
+
+Collect exported resources:
+
+	   hosts::tag_collect: application_production
+
+
 ## Limitations
 
 This module has been tested with CentOS 6.5 with facter 2.2.0 using hiera configs.

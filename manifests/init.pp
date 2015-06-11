@@ -7,6 +7,7 @@ class hosts (
   $fqdn_entry = $::fqdn,
   $hostname_entry = $::hostname,
   $localhost_entries = [],
+  $tag_collect = '',
   ) {
   file { 'hosts_file':
   path    => '/etc/hosts',
@@ -19,4 +20,11 @@ class hosts (
   purge   => true,
   }
   include hosts::entries
+
+  if $tag_collect != '' {
+
+  Host <<| tag == $tag_collect |>>
+
   }
+
+}
