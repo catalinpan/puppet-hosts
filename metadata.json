@@ -7,6 +7,11 @@
   "source": "https://github.com/catalinpan/puppet-hosts",
   "issues_url": "https://github.com/catalinpan/puppet-hosts/issues",
   "project_page": "https://github.com/catalinpan/puppet-hosts",
-  "dependencies": []
+  "dependencies": [
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 1.1.1 <2.0.0"
+    }
+  ]
 }
 

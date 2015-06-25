@@ -1,18 +1,16 @@
-# ==Class: hosts::entries
+# ==Define: hosts::entries
 #
 # Manage hosts entries using puppet
 #
 #
-class hosts::entries {
-  $myHost = hiera_hash('hosts::hosts_entries')
-  if $myHost {
-  create_resources ( host, $myHost )
-  }
+define hosts::entries (
+  $host_aliases = [],
+  $ip = '',
+  ) {
 
-  $myHostExport = hiera_hash('hosts::hosts_entries_export', {})
-  if $myHostExport {
-  create_resources ( '@@host', $myHostExport )
+concat::fragment{"hosts_${title}":
+  target  => '/etc/hosts',
+  content => template('hosts/entries.erb'),
+  order   => '99',
   }
-
 }
-

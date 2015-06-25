@@ -11,6 +11,7 @@
     * [What hosts affects](#what-hosts-affects)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Dependencies](#dependencies)
 
 ## Overview
 
@@ -86,3 +87,7 @@ Collect exported resources:
 ## Limitations
 
 This module has been tested with CentOS 6.5 with facter 2.2.0 using hiera configs.
+
+## Dependencies
+
+This module requires puppetlabs-concat >= 1.1.1
