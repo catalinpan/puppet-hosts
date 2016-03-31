@@ -26,7 +26,7 @@ concat::fragment{'hosts_local':
   order   => 2,
   }
 
-  $myHost = hiera_hash('hosts::hosts_entries')
+  $myHost = hiera_hash('hosts::hosts_entries', {})
   if $myHost {
   create_resources ( hosts::entries, $myHost )
   }
